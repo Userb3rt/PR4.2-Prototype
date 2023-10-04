@@ -74,9 +74,38 @@ public class Main {
         listaeElectrodomestics.add(f2);
 
 
-        Rentadora r1c = (Rentadora) r1.clone();
-        listaCopy.add(r1c);
+        for (Electrodomestic obj : listaeElectrodomestics) {
+            listaCopy.add(obj.clone());
+        }
 
 
+        System.out.println("Comparar la mateixa llista:");
+        for (int i = 0; i < listaeElectrodomestics.size(); i++) {
+            compare(i, listaeElectrodomestics.get(i), listaeElectrodomestics.get(i));
+        }
+
+        System.out.println("Comparar amb la llista clonada:");
+        for (int i = 0; i < listaeElectrodomestics.size(); i++) {
+            compare(i, listaeElectrodomestics.get(i), listaCopy.get(i));
+        }
+
+        System.out.println("Comparar amb la llista clonada però invertida:");
+        for (int i = 0; i < listaeElectrodomestics.size(); i++) {
+            compare(i, listaeElectrodomestics.get(i), listaCopy.get(listaCopy.size() - i - 1));
+        }
+
+
+    }
+    static void compare (int i, Electrodomestic a, Electrodomestic b) {
+        if (a == b) {
+            System.out.println(i + ": Els poligons són el mateix objecte");
+        } else {
+            System.out.print(i + ": Els poligons són objectes diferents - ");
+            if (a.equals(b)) {
+                System.out.println(i + ": Els poligons són idèntics");
+            } else {
+                System.out.println(i + ": Els poligons NO són identics");
+            }
+        }
     }
 }
